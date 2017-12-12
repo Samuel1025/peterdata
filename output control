@@ -1,0 +1,15 @@
+var pin;
+
+
+boardReady({board: 'Smart', device: 'm7kbL', transport: 'mqtt'}, function (board) {
+  board.systemReset();
+  board.samplingInterval = 50;
+  pin = getPin({transport: 'mqtt', device: 'm7kbL'}, 14);
+  pin.setMode(1);
+  document.getElementById("demo-area-05-btn1").addEventListener("click",function(){
+    pin.write(0);
+  });
+  document.getElementById("demo-area-05-btn2").addEventListener("click",function(){
+    pin.write(1);
+  });
+});
